@@ -1,6 +1,4 @@
-import './categories.styles.scss';
-import './components/category-item/category-item.component.jsx';
-import CategoryItem from './components/category-item/category-item.component.jsx';
+import Directory from './components/directory/directory.component';
 const App = () => {
   const categories = [
     {
@@ -33,13 +31,7 @@ const App = () => {
         'https://t4.ftcdn.net/jpg/02/97/24/51/360_F_297245133_gBPfK0h10UM3y7vfoEiBC3ZXt559KZar.jpg',
     },
   ];
-  return (
-    <div className="categories-container">
-      {categories.map((category) => (
-        <CategoryItem key={category.id} category={category}></CategoryItem>
-      ))}
-    </div>
-  );
+  return <Directory categories={categories}></Directory>;
 };
 
 export default App;

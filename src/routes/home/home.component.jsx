@@ -1,4 +1,6 @@
 import Directory from '../../components/directory/directory.component';
+import { Outlet } from 'react-router';
+
 const Home = () => {
   const categories = [
     {
@@ -31,7 +33,12 @@ const Home = () => {
         'https://t4.ftcdn.net/jpg/02/97/24/51/360_F_297245133_gBPfK0h10UM3y7vfoEiBC3ZXt559KZar.jpg',
     },
   ];
-  return <Directory categories={categories}></Directory>;
+  return (
+    <div>
+      <Outlet />
+      <Directory categories={categories}></Directory>;
+    </div>
+  );
 };
 
 export default Home;

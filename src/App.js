@@ -8,8 +8,9 @@ const Shop = () => {
 const App = () => {
   return (
     <Routes>
-      <Route path="/home" element={<Home />}></Route>
-      <Route path="/shop" element={<Shop />}></Route>
+      <Route path="/home" element={<Home />}>
+        <Route path="shop" element={<Shop />}></Route>
+      </Route>
     </Routes>
   );
 };

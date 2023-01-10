@@ -4,6 +4,7 @@ import {
   createUserDocumentFromAuth,
 } from '../../utils/firebase/firebase.utils';
 import { useState } from 'react';
+import FormInput from '../../components/form-input/form-input.component';
 
 // object
 const defaultFormFields = {
@@ -59,8 +60,8 @@ const SignUpForm = () => {
     <div className="SignUpForm">
       <h1>Sign Up with your Email & Password</h1>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="SignUpDisplayNameInputField">Display Name</label>
-        <input
+        <FormInput
+          label="Display Name"
           type="text"
           id="SignUpDisplayNameInputField"
           name="displayName"
@@ -69,8 +70,8 @@ const SignUpForm = () => {
           required
         />
 
-        <label htmlFor="SignUpEmailInputField">Email</label>
-        <input
+        <FormInput
+          label="Email "
           type="email"
           id="SignUpEmailInputField"
           name="email"
@@ -79,8 +80,8 @@ const SignUpForm = () => {
           required
         />
 
-        <label htmlFor="SignUpPasswordInputField">Password</label>
-        <input
+        <FormInput
+          label="Password"
           type="password"
           id="SignUpPasswordInputField"
           name="password"
@@ -89,10 +90,8 @@ const SignUpForm = () => {
           required
         />
 
-        <label htmlFor="SignUpConfirmPasswordInputField">
-          Confirm Password
-        </label>
-        <input
+        <FormInput
+          label="Confirm Password"
           type="password"
           id="SignUpConfirmPasswordInputField"
           name="confirmPassword"

@@ -5,6 +5,7 @@ import {
 } from '../../utils/firebase/firebase.utils';
 import { useState } from 'react';
 import FormInput from '../../components/form-input/form-input.component';
+import Button from '../../components/button/botton.component';
 
 // object
 const defaultFormFields = {
@@ -57,8 +58,9 @@ const SignUpForm = () => {
   };
 
   return (
-    <div className="SignUpForm">
-      <h1>Sign Up with your Email & Password</h1>
+    <div className="Sign-up-form-container">
+      <h2>Don't have an account?</h2>
+      <span>Sign Up with your Email & Password</span>
       <form onSubmit={handleSubmit}>
         <FormInput
           label="Display Name"
@@ -100,7 +102,7 @@ const SignUpForm = () => {
           required
         />
 
-        <button type="submit">Sign Up</button>
+        <Button type="submit">Sign Up</Button>
       </form>
     </div>
   );

@@ -4,8 +4,8 @@ const FormInput = ({ label, ...otherProps }) => {
   const { id } = otherProps;
   return (
     <div className="group">
-      {/* If label exists --> render it */}
       <input className="form-input" {...otherProps} />
+      {/* If label exists --> render it */}
       {label && (
         <label
           htmlFor={id}

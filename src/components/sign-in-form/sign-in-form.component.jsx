@@ -1,10 +1,10 @@
-import './sign-in.styles.scss';
+import './sign-in-form.styles.scss';
 import { useEffect } from 'react';
 import { getRedirectResult } from '@firebase/auth';
 import { useState } from 'react';
 
-import Button from '../../components/button/botton.component';
-import FormInput from '../../components/form-input/form-input.component';
+import Button from '../button/botton.component';
+import FormInput from '../form-input/form-input.component';
 
 import {
   signInWithGooglePopup,
@@ -58,6 +58,8 @@ const SignIn = () => {
   return (
     <div className="Sign-in">
       <h1>Sign In Page</h1>
+      <h3>Already have an account?</h3>
+      <span>Sign In with your Email & Password</span>
       <form onSubmit={handleSubmit}>
         <FormInput
           label="Email"
@@ -77,12 +79,13 @@ const SignIn = () => {
           onChange={handleChange}
           required
         />
-        <Button onClick={handleSubmit}> Sign in</Button>
+        <div className="btns-container">
+          <Button type="submit">Sign in</Button>
+          <Button buttonType="google" onClick={logGoogleUser}>
+            Sign in with Google
+          </Button>
+        </div>
       </form>
-      <Button buttonType="google" onClick={logGoogleUser}>
-        {' '}
-        Sign in with Google
-      </Button>
     </div>
   );
 };

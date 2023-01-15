@@ -1,10 +1,11 @@
 import './sign-in-form.styles.scss';
-import { useEffect } from 'react';
+import { useState, useContext } from 'react';
 import { getRedirectResult } from '@firebase/auth';
-import { useState } from 'react';
 
 import Button from '../button/botton.component';
 import FormInput from '../form-input/form-input.component';
+
+import { UserContext } from '../../contexts/user.context';
 
 import {
   signInWithGooglePopup,
@@ -21,6 +22,7 @@ const SignIn = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
   console.log(formFields);
+  const { setCurrentUser } = useContext(UserContext);
 
   const logGoogleUser = async () => {
     const { user } = await signInWithGooglePopup();
@@ -36,7 +38,7 @@ const SignIn = () => {
 
     try {
       const { user } = await signIn_Auth_WithEmailAndPassword(email, password);
-
+      setCurrentUser(user);
       resetFormFields();
       console.log(user);
     } catch (error) {

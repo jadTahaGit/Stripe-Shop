@@ -38,7 +38,7 @@ const SignIn = () => {
 
     try {
       const { user } = await signIn_Auth_WithEmailAndPassword(email, password);
-      setCurrentUser(user);
+      // setCurrentUser(user);
       resetFormFields();
       console.log(user);
     } catch (error) {

@@ -5,11 +5,10 @@ import { getRedirectResult } from '@firebase/auth';
 import Button from '../button/botton.component';
 import FormInput from '../form-input/form-input.component';
 
-import { UserContext } from '../../contexts/user.context';
+// import { UserContext } from '../../contexts/user.context';
 
 import {
   signInWithGooglePopup,
-  createUserDocumentFromAuth,
   signIn_Auth_WithEmailAndPassword,
 } from '../../utils/firebase/firebase.utils';
 
@@ -21,12 +20,9 @@ const defaultFormFields = {
 const SignIn = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
-  console.log(formFields);
-  const { setCurrentUser } = useContext(UserContext);
 
   const logGoogleUser = async () => {
-    const { user } = await signInWithGooglePopup();
-    const userDocRef = await createUserDocumentFromAuth(user);
+    await signInWithGooglePopup();
   };
 
   const resetFormFields = () => {
@@ -38,9 +34,8 @@ const SignIn = () => {
 
     try {
       const { user } = await signIn_Auth_WithEmailAndPassword(email, password);
-      // setCurrentUser(user);
+      // setCurrentUser(user); //could be done more easily
       resetFormFields();
-      console.log(user);
     } catch (error) {
       // these dont exist on SignIn
       switch (error.code) {

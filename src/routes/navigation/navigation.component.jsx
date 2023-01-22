@@ -5,14 +5,13 @@ import { ReactComponent as OneMJLogo } from '../../assets/1Million JOURNEY.svg';
 import { UserContext } from '../../contexts/user.context';
 import { signOutUser } from '../../utils/firebase/firebase.utils';
 import CartIcon from '../../components/cart-icon/cart-icon.component';
-import CartDropDown from '../../components/cart-dropdown/cart-dropdown.component';
+import CartDropdown from '../../components/cart-dropdown/cart-dropdown.component';
+import { CartDropdownContext } from '../../contexts/cart-dropdown.context';
 
 const Navigation = () => {
   const { currentUser, setCurrentUser } = useContext(UserContext);
-  const signOutHandler = async () => {
-    await signOutHandler();
-    setCurrentUser(null);
-  };
+  const { isCartOpened } = useContext(CartDropdownContext);
+
   return (
     <Fragment>
       <div className="navigation">
@@ -34,7 +33,7 @@ const Navigation = () => {
           )}
           <CartIcon></CartIcon>
         </div>
-        <CartDropDown></CartDropDown>
+        {isCartOpened && <CartDropdown />}
       </div>
       <Outlet></Outlet>
     </Fragment>

@@ -1,10 +1,10 @@
 import { Fragment, useContext } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import './navigation.styles.scss';
-
 import { ReactComponent as OneMJLogo } from '../../assets/1Million JOURNEY.svg';
 import { UserContext } from '../../contexts/user.context';
 import { signOutUser } from '../../utils/firebase/firebase.utils';
+import CartIcon from '../../components/cart-icon/cart-icon.component';
 
 const Navigation = () => {
   const { currentUser, setCurrentUser } = useContext(UserContext);
@@ -31,6 +31,7 @@ const Navigation = () => {
               SignIn
             </Link>
           )}
+          <CartIcon></CartIcon>
         </div>
       </div>
       <Outlet></Outlet>

@@ -14,7 +14,7 @@ const addCartItem = (cartItems, productToAdd) => {
         : cartItem
     );
   }
-  // return new array with modified cartItems/new cart item
+  // else return new array with modified cartItems/new cart item
   return [...cartItems, { ...productToAdd, quantity: 1 }];
 };
 
@@ -28,13 +28,13 @@ export const CartDropdownContext = createContext({
 
 export const CartDropdownProvider = ({ children }) => {
   const [isCartOpened, setCartOpened] = useState(false);
-  const value = { isCartOpened, setCartOpened };
   const [cartItems, setCartItems] = useState([]);
 
   const addItemToCart = (productToAdd) => {
     setCartItems(addCartItem(cartItems, productToAdd));
   };
 
+  const value = { isCartOpened, setCartOpened, addItemToCart, cartItems };
   return (
     <CartDropdownContext.Provider value={value}>
       {children}

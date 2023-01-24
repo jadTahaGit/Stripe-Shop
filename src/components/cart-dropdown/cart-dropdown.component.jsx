@@ -1,8 +1,8 @@
 import './cart-dropdown.styles.scss';
+import { useContext } from 'react';
 import Button from '../button/botton.component';
 import CartItem from '../cart-item/cart-item.component';
 import { CartDropdownContext } from '../../contexts/cart-dropdown.context';
-import { useContext } from 'react';
 
 const CartDropDown = () => {
   const { cartItems } = useContext(CartDropdownContext);

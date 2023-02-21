@@ -18,6 +18,25 @@ const addCartItem = (cartItems, productToAdd) => {
   return [...cartItems, { ...productToAdd, quantity: 1 }];
 };
 
+const removeCartItem = (cartItems, productToRemove) => {
+  //find the right item to remove
+  const existingCartItem = cartItems.find(
+    (cartItems) => cartItems.id === productToRemove.id
+  );
+
+  // IF there is one remove the item
+  if (existingCartItem.quantity === 1) {
+    return cartItems.filter((cartItem) => cartItem.id !== productToRemove.id);
+  }
+
+  //return back caritems with matchin cart Item with reduced quantity
+  return cartItems.map((cartItem) =>
+    cartItem.id === productToRemove.id
+      ? { ...cartItem, quantity: cartItem.quantity - 1 }
+      : cartItem
+  );
+};
+
 //actual value you want to access
 export const CartDropdownContext = createContext({
   isCartOpened: false,
@@ -44,10 +63,15 @@ export const CartDropdownProvider = ({ children }) => {
     setCartItems(addCartItem(cartItems, productToAdd));
   };
 
+  const removeItemFromCart = (productToRemove) => {
+    setCartItems(removeCartItem(cartItems, productToRemove));
+  };
+
   const value = {
     isCartOpened,
     setCartOpened,
     addItemToCart,
+    removeItemFromCart,
     cartItems,
     cartCount,
   };

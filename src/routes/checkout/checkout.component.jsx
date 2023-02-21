@@ -4,25 +4,44 @@ import { useContext } from 'react';
 import { CartDropdownContext } from '../../contexts/cart-dropdown.context';
 
 import CartItem from '../../components/cart-item/Cart-item.component';
+import CheckoutItem from '../checkout-item/checkout-item.component';
 
 const Checkout = () => {
-  const { cartItems, addItemToCart, removeItemFromCart } =
+  const { cartItems, addItemToCart, decrementItemFromCart } =
     useContext(CartDropdownContext);
 
   console.log(cartItems[1]);
 
   return (
-    <div>
-      {cartItems.map((cartItem) => (
-        <div className="" key={cartItem.id}>
-          <h2>{cartItem.name}</h2>
-          <span>{cartItem.quantity}</span>
-          <br />
-          <span onClick={() => removeItemFromCart(cartItem)}>decrement</span>
-          <br />
-          <span onClick={() => addItemToCart(cartItem)}> increment</span>
+    <div className="checkout-container">
+      <div className="checkout-header">
+        <div className="header-block">
+          <span>Product</span>
         </div>
-      ))}{' '}
+
+        <div className="header-block">
+          <span>Description</span>
+        </div>
+
+        <div className="header-block">
+          <span>Quantity</span>
+        </div>
+
+        <div className="header-block">
+          <span>Price</span>
+        </div>
+
+        <div className="header-block">
+          <span>Remove</span>
+        </div>
+      </div>
+
+      <div>
+        {cartItems.map((cartItem) => (
+          <CheckoutItem key={cartItem.id} cartItem={cartItem}></CheckoutItem>
+        ))}{' '}
+        <span className="total">Total: 0</span>
+      </div>
     </div>
   );
 };

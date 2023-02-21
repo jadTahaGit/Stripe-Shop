@@ -18,7 +18,7 @@ const addCartItem = (cartItems, productToAdd) => {
   return [...cartItems, { ...productToAdd, quantity: 1 }];
 };
 
-const removeCartItem = (cartItems, productToRemove) => {
+const decrementCartItem = (cartItems, productToRemove) => {
   //find the right item to remove
   const existingCartItem = cartItems.find(
     (cartItems) => cartItems.id === productToRemove.id
@@ -35,6 +35,10 @@ const removeCartItem = (cartItems, productToRemove) => {
       ? { ...cartItem, quantity: cartItem.quantity - 1 }
       : cartItem
   );
+};
+
+const clearCartItem = (cartItems, cartItemToRemove) => {
+  return cartItems.filter((cartItem) => cartItem.id !== cartItemToRemove.id);
 };
 
 //actual value you want to access
@@ -63,15 +67,20 @@ export const CartDropdownProvider = ({ children }) => {
     setCartItems(addCartItem(cartItems, productToAdd));
   };
 
-  const removeItemFromCart = (productToRemove) => {
-    setCartItems(removeCartItem(cartItems, productToRemove));
+  const decrementItemFromCart = (productToRemove) => {
+    setCartItems(decrementCartItem(cartItems, productToRemove));
+  };
+
+  const cleartItemFromCart = (cartItemToRemove) => {
+    setCartItems(clearCartItem(cartItems, cartItemToRemove));
   };
 
   const value = {
     isCartOpened,
     setCartOpened,
     addItemToCart,
-    removeItemFromCart,
+    decrementItemFromCart,
+    cleartItemFromCart,
     cartItems,
     cartCount,
   };

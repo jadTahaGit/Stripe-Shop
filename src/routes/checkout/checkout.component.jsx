@@ -3,8 +3,7 @@ import { useContext } from 'react';
 
 import { CartDropdownContext } from '../../contexts/cart-dropdown.context';
 
-import CartItem from '../../components/cart-item/Cart-item.component';
-import CheckoutItem from '../checkout-item/checkout-item.component';
+import CheckoutItem from '../../components/checkout-item/checkout-item.component';
 
 const Checkout = () => {
   const { cartItems, cartTotal } = useContext(CartDropdownContext);

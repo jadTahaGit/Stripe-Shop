@@ -4,7 +4,11 @@ import { useContext } from 'react';
 import { CartDropdownContext } from '../../contexts/cart-dropdown.context';
 
 const CheckoutItem = ({ cartItem }) => {
-  const { cleartItemFromCart } = useContext(CartDropdownContext);
+  const { cleartItemFromCart, addItemToCart, decrementItemFromCart } =
+    useContext(CartDropdownContext);
+
+  const incrementCartItemHandler = () => addItemToCart(cartItem);
+  const decrementCartItemHandler = () => decrementItemFromCart(cartItem);
 
   const clearItemHandler = () => cleartItemFromCart(cartItem);
 
@@ -16,7 +20,16 @@ const CheckoutItem = ({ cartItem }) => {
         <img src={imageUrl} alt={`${name}`} />
       </div>
       <span className="name">{name}</span>
-      <span className="quantity">{quantity}</span>
+      <div className="quantity">
+        <div className="arrow" onClick={decrementCartItemHandler}>
+          &#10094;
+        </div>
+        <span className="value">{quantity}</span>
+        <div className="arrow" onClick={incrementCartItemHandler}>
+          &#10095;
+        </div>
+      </div>
+
       <span className="price">{price}</span>
       <div className="remove-button" onClick={clearItemHandler}>
         &#10005;

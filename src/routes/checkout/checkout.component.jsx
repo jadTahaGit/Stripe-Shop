@@ -7,8 +7,7 @@ import CartItem from '../../components/cart-item/Cart-item.component';
 import CheckoutItem from '../checkout-item/checkout-item.component';
 
 const Checkout = () => {
-  const { cartItems, addItemToCart, decrementItemFromCart } =
-    useContext(CartDropdownContext);
+  const { cartItems, cartTotal } = useContext(CartDropdownContext);
 
   console.log(cartItems[1]);
 
@@ -40,7 +39,7 @@ const Checkout = () => {
         {cartItems.map((cartItem) => (
           <CheckoutItem key={cartItem.id} cartItem={cartItem}></CheckoutItem>
         ))}{' '}
-        <span className="total">Total: 0</span>
+        <span className="total">Total: ${cartTotal}</span>
       </div>
     </div>
   );

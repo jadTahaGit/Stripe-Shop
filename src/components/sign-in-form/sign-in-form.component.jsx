@@ -2,7 +2,7 @@ import './sign-in-form.styles.scss';
 import { useState, useContext } from 'react';
 import { getRedirectResult } from '@firebase/auth';
 
-import Button from '../button/botton.component';
+import Button, { BUTTON_TYPE_CLASSES } from '../button/botton.component';
 import FormInput from '../form-input/form-input.component';
 
 // import { UserContext } from '../../contexts/user.context';
@@ -83,7 +83,11 @@ const SignIn = () => {
         />
         <div className="btns-container">
           <Button type="submit">Sign in</Button>
-          <Button type="button" buttonType="google" onClick={logGoogleUser}>
+          <Button
+            type="button"
+            buttonType={BUTTON_TYPE_CLASSES.google}
+            onClick={logGoogleUser}
+          >
             Sign in with Google
           </Button>
         </div>

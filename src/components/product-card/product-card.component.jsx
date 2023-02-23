@@ -1,6 +1,6 @@
 import './product-card.styles.scss';
 
-import Button from '../button/botton.component';
+import Button, { BUTTON_TYPE_CLASSES } from '../button/botton.component';
 
 import { CartDropdownContext } from '../../contexts/cart-dropdown.context';
 import { useContext } from 'react';
@@ -21,7 +21,10 @@ const ProductCard = ({ product }) => {
         <span className="name">{name}</span>
         <span className="price">{price}</span>
       </div>
-      <Button buttonType="inverted" onClick={() => addItemToCart(product)}>
+      <Button
+        buttonType={BUTTON_TYPE_CLASSES.inverted}
+        onClick={() => addItemToCart(product)}
+      >
         Add to card
       </Button>
     </div>

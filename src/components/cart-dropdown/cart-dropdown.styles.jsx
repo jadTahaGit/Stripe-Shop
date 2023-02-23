@@ -1,4 +1,6 @@
-.cart-dropdown-container {
+import styled from 'styled-components';
+
+export const CartDropdown = styled.button`
   position: absolute;
   min-width: 240px;
   max-height: 340px;
@@ -26,4 +28,4 @@
   button {
     margin-top: auto;
   }
-}
+`;

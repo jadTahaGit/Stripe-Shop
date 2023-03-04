@@ -2,12 +2,12 @@ import './product-card.styles.scss';
 
 import Button, { BUTTON_TYPE_CLASSES } from '../button/botton.component';
 
-import { CartDropdownContext } from '../../contexts/cart-dropdown.context';
+import { CartContext } from '../../contexts/cart.context';
 import { useContext } from 'react';
 
 const ProductCard = ({ product }) => {
   const { name, price, imageUrl } = product;
-  const { addItemToCart } = useContext(CartDropdownContext);
+  const { addItemToCart } = useContext(CartContext);
 
   const addProductToCart = () => {
     console.log(product);

@@ -2,11 +2,11 @@ import { CartDropdown, EmptyMessage, CartItems } from './cart-dropdown.styles';
 import { useContext } from 'react';
 import Button from '../button/botton.component';
 import CartItem from '../cart-item/Cart-item.component';
-import { CartDropdownContext } from '../../contexts/cart-dropdown.context';
+import { CartContext } from '../../contexts/cart.context';
 import { Link } from 'react-router-dom';
 
 const CartDropDown = () => {
-  const { cartItems } = useContext(CartDropdownContext);
+  const { cartItems } = useContext(CartContext);
 
   return (
     <CartDropdown>

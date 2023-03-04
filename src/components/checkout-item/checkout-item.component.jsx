@@ -1,11 +1,11 @@
 import './checkout-item.styles.scss';
 import { useContext } from 'react';
 
-import { CartDropdownContext } from '../../contexts/cart-dropdown.context';
+import { CartContext } from '../../contexts/cart.context';
 
 const CheckoutItem = ({ cartItem }) => {
   const { cleartItemFromCart, addItemToCart, decrementItemFromCart } =
-    useContext(CartDropdownContext);
+    useContext(CartContext);
 
   const incrementCartItemHandler = () => addItemToCart(cartItem);
   const decrementCartItemHandler = () => decrementItemFromCart(cartItem);

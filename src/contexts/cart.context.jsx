@@ -42,7 +42,7 @@ const clearCartItem = (cartItems, cartItemToRemove) => {
 };
 
 //actual value you want to access
-export const CartDropdownContext = createContext({
+export const CartContext = createContext({
   isCartOpened: false,
   setCartOpened: () => {},
   cartItems: [],
@@ -51,7 +51,7 @@ export const CartDropdownContext = createContext({
   cartTotal: 0,
 });
 
-export const CartDropdownProvider = ({ children }) => {
+export const CartProvider = ({ children }) => {
   const [isCartOpened, setCartOpened] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   const [cartCount, setCartCount] = useState(0);
@@ -95,9 +95,5 @@ export const CartDropdownProvider = ({ children }) => {
     cartCount,
     cartTotal,
   };
-  return (
-    <CartDropdownContext.Provider value={value}>
-      {children}
-    </CartDropdownContext.Provider>
-  );
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };

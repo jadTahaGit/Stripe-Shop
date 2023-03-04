@@ -6,7 +6,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { UserProvider } from './contexts/user.context';
 import { CategoriesProvider } from './contexts/categories.context';
-import { CartDropdownProvider } from './contexts/cart-dropdown.context';
+import { CartProvider } from './contexts/cart.context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,9 +16,9 @@ root.render(
       Products should be able to access the User so ProductProvider inside*/}
       <UserProvider>
         <CategoriesProvider>
-          <CartDropdownProvider>
+          <CartProvider>
             <App />
-          </CartDropdownProvider>
+          </CartProvider>
         </CategoriesProvider>
       </UserProvider>
     </BrowserRouter>

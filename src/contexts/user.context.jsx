@@ -28,8 +28,7 @@ const userReducer = (state, action) => {
     //   };
 
     default:
-      // throw new Error(`Unhandled type ${type} in userReducer`);
-      return 0;
+      throw new Error(`Unhandled type ${type} in userReducer`);
   }
 };
 

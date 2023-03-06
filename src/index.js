@@ -7,21 +7,25 @@ import reportWebVitals from './reportWebVitals';
 import { UserProvider } from './contexts/user.context';
 import { CategoriesProvider } from './contexts/categories.context';
 import { CartProvider } from './contexts/cart.context';
+import { Provider } from 'react-redux';
+import { store } from './store/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      {/* which is better UserProvider inside ProductProvider or the ViceVersa? 
+    <Provider store={store}>
+      <BrowserRouter>
+        {/* which is better UserProvider inside ProductProvider or the ViceVersa? 
       Products should be able to access the User so ProductProvider inside*/}
-      <UserProvider>
+        {/* <UserProvider> */}
         <CategoriesProvider>
           <CartProvider>
             <App />
           </CartProvider>
         </CategoriesProvider>
-      </UserProvider>
-    </BrowserRouter>
+        {/* </UserProvider> */}
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );
 

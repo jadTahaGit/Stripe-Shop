@@ -40,7 +40,6 @@ export const UserProvider = ({ children }) => {
   // const [currentUser, setCurrentUser] = useState(null);
   const [state, dispatch] = useReducer(userReducer, INTIAL_STATE);
   const { currentUser } = state;
-  console.log(currentUser);
 
   const setCurrentUser = (user) => {
     dispatch({ type: USER_ACTION_TYPES.SET_CURRENT_USER, payload: user });
@@ -50,7 +49,6 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChangedListener((user) => {
-      console.log(user);
       if (user) {
         createUserDocumentFromAuth(user);
       }

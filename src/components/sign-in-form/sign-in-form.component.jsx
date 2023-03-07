@@ -9,7 +9,7 @@ import FormInput from '../form-input/form-input.component';
 
 import {
   signInWithGooglePopup,
-  signIn_Auth_WithEmailAndPassword,
+  signInAuthUserWithEmailAndPassword,
 } from '../../utils/firebase/firebase.utils';
 
 const defaultFormFields = {
@@ -33,7 +33,10 @@ const SignIn = () => {
     event.preventDefault();
 
     try {
-      const { user } = await signIn_Auth_WithEmailAndPassword(email, password);
+      const { user } = await signInAuthUserWithEmailAndPassword(
+        email,
+        password
+      );
       // setCurrentUser(user); //could be done more easily
       resetFormFields();
     } catch (error) {
